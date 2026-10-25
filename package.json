@@ -1,0 +1,21 @@
+{
+  "name": "payment-portal",
+  "version": "1.0.0",
+  "description": "Стилизованный сайт для приёма платежей и донатов (DonatePay, Tribute, Boosty, Крипто)",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -l 3000 .",
+    "dev": "npx serve -l 3000 .",
+    "preview": "npx serve -l 3000 ."
+  },
+  "keywords": [
+    "payment",
+    "donatepay",
+    "boosty",
+    "tribute",
+    "checkout",
+    "donations"
+  ],
+  "author": "Yohanson",
+  "license": "MIT"
+}

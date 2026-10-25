@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Поддержка автора — Центр приёма платежей</title>
+  <meta name="description" content="Универсальная форма приёма платежей и поддержки проектов: DonatePay, Tribute (СБП, Telegram) и Boosty (PayPal, зарубежные карты).">
+  <meta name="referrer" content="origin">
+  <link rel="icon" type="image/png" href="./assets/fav.png">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- Main Container (Positioned above vertical center) -->
+  <main class="main-wrapper">
+    <div class="checkout-card">
+      
+      <!-- Checkout Header -->
+      <div class="checkout-header">
+        <div class="header-left">
+          <span class="header-icon">☕</span>
+          <h1 class="header-title">Купить кофе автору</h1>
+        </div>
+        <div class="header-right">
+          <span class="security-chip">
+            <span class="status-dot"></span>
+            SSL 256-bit • Защищено
+          </span>
+        </div>
+      </div>
+
+      <!-- Protocol Notice for file:/// (DonatePay requires HTTP Referer) -->
+      <div id="fileProtocolNotice" class="protocol-notice" style="display: none;">
+        <span>⚠️ Виджет DonatePay требует запуска через веб-сервер (например, <code>npx serve</code> или <code>npm start</code>), так как DonatePay отклоняет прямые запросы из протокола <code>file:///</code>.</span>
+        <a href="https://widget.donatepay.ru/widgets/page/5b9b042a1087238b9b5c0b136087653fd1745973987471d580a9c50a3a52cbca?widget_id=7923057&sum=300" target="_blank" rel="noreferrer" class="notice-btn">
+          Открыть напрямую ↗
+        </a>
+      </div>
+
+      <!-- Split Layout: Info on Left, DonatePay Widget on Right -->
+      <div class="split-grid">
+        
+        <!-- Left Column: Purpose, Alternative Methods, QR -->
+        <aside class="sidebar-column">
+          
+          <!-- Purpose Section -->
+          <div class="info-box">
+            <div class="info-heading">Куда идут средства</div>
+            <ul class="info-list">
+              <li><span class="bullet">•</span><span>Оплата серверов, хостинга и инфраструктуры</span></li>
+              <li><span class="bullet">•</span><span>Разработка, поддержка и развитие проектов</span></li>
+              <li><span class="bullet">•</span><span>Чашка кофе автору за открытые продукты</span></li>
+            </ul>
+          </div>
+
+          <!-- Alternative Methods Card -->
+          <div class="alt-methods-box">
+            <div class="info-heading">Другие способы</div>
+
+            <!-- Tribute -->
+            <a href="https://web.tribute.tg/d/SQQ" target="_blank" rel="noreferrer" class="method-row">
+              <div class="method-row-left">
+                <span class="method-badge tribute-badge">✈️</span>
+                <div class="method-text">
+                  <div class="method-title">Tribute</div>
+                  <div class="method-sub">Telegram • Карты РФ / СБП</div>
+                </div>
+              </div>
+              <span class="row-arrow">↗</span>
+            </a>
+
+            <!-- Boosty -->
+            <a href="https://boosty.to/yohannson/donate" target="_blank" rel="noreferrer" class="method-row">
+              <div class="method-row-left">
+                <span class="method-badge boosty-badge">🔥</span>
+                <div class="method-text">
+                  <div class="method-title">Boosty</div>
+                  <div class="method-sub">Карты РФ, зарубежные & PayPal</div>
+                </div>
+              </div>
+              <span class="row-arrow">↗</span>
+            </a>
+
+            <!-- Boosty QR code (Click to enlarge) -->
+            <div class="qr-preview-box" data-qr-trigger title="Нажмите для увеличения QR-кода">
+              <img class="qr-preview-img" src="./assets/boosty_qr.png" alt="Boosty QR">
+              <div class="qr-text">
+                <strong style="color: var(--text-main);">QR на Boosty:</strong><br>
+                Наведите камеру смартфона для быстрого доната
+              </div>
+            </div>
+
+          </div>
+
+        </aside>
+
+        <!-- Right Column: Official DonatePay Widget -->
+        <section class="widget-column">
+          <iframe 
+            id="donatePayIframe"
+            src="https://widget.donatepay.ru/widgets/page/5b9b042a1087238b9b5c0b136087653fd1745973987471d580a9c50a3a52cbca?widget_id=7923057&sum=300"
+            width="1140"
+            height="312"
+            frameborder="0"
+            referrerpolicy="origin"
+            class="donatepay-frame"
+            title="DonatePay Payment Widget"
+            loading="eager"
+          ></iframe>
+        </section>
+
+      </div>
+
+    </div>
+
+    <!-- Payment Gateway Bottom Bar -->
+    <footer class="bottom-bar">
+      <div class="brand">
+        <img src="./assets/logo.svg" alt="Payment Gateway Logo" width="26" height="26">
+        <div class="brand-text">
+          <span class="brand-name">Payment Gateway</span>
+          <span class="brand-tag">Secure Support & Checkout</span>
+        </div>
+      </div>
+
+      <div class="bottom-actions">
+        <button id="shareLinkBtn" class="action-btn" title="Скопировать ссылку на страницу">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+          <span>Поделиться</span>
+        </button>
+
+        <div class="bottom-nav">
+          <a href="https://web.tribute.tg/d/SQQ" target="_blank" rel="noreferrer" class="nav-link">Tribute</a>
+          <a href="https://boosty.to/yohannson/donate" target="_blank" rel="noreferrer" class="nav-link">Boosty</a>
+          <a href="https://widget.donatepay.ru/widgets/page/5b9b042a1087238b9b5c0b136087653fd1745973987471d580a9c50a3a52cbca?widget_id=7923057&sum=300" target="_blank" rel="noreferrer" class="nav-link">DonatePay</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Modal for Boosty QR Zoom -->
+  <div id="qrModal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <button id="modalCloseBtn" class="modal-close-btn" aria-label="Закрыть">✕</button>
+      <h3 style="font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px;">QR-код на Boosty</h3>
+      <p style="font-size: 12px; color: var(--text-secondary);">Отсканируйте камерой смартфона для перехода к оплате</p>
+      <img src="./assets/boosty_qr.png" alt="Boosty QR Large" class="modal-qr-img">
+      <a href="https://boosty.to/yohannson/donate" target="_blank" rel="noreferrer" class="dialog-pay-btn">
+        Перейти на Boosty ↗
+      </a>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>
